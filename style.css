@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+html,
+body {
+  font-family: vdl-logojrblack,sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #333333;
+
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  position: fixed;
+  margin: 0;
+  overflow: hidden;
+  width: 100%; height: 100%;
+  /* -webkit-filter: blur(2px);
+        -moz-filter: blur(2px);
+         -ms-filter: blur(2px);
+          -o-filter: blur(2px);
+             filter: blur(2px); */
+}
+
+#container {
+  width: 100%; height: 100%;
+}
+#canvas {
+  background: #1a1a1a;
+  background-image: url("images/backcross.png");
+  display: block;
+}
+
+
+.center {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.inline-center {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+#header {
+  position: absolute;
+  background: #ff0f51;
+  color: #ffffff;
+  margin: 0px;
+  width: 100%;
+  top: 0px; left: 0px;
+}
+#header{
+  margin: 0;
+}
+
+.hfFlex {
+  height: 100%;
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+  align-items: center; /* 縦方向中央揃え */
+  -webkit-justify-content: space-around;
+  justify-content: space-between;
+}
+.circleButton {
+  position: relative;
+  background: #0000ff;
+}
+
+#footer {
+  position: absolute;
+  background: #ff0f51;
+  margin: 0px;
+  width: 100%;
+  left: 0px;
+}
+.squareButton {
+  position: relative;
+  background: #ffffff;
+}
+
+#modeMenu {
+  position: absolute;
+  top: 50%;
+}
+
+
+.touchZone {
+  position: absolute;
+  top: 0px; left: 0px;
+  width: 100%; height: 100%;
+}
+#scrollBox {
+  position: absolute;
+}
+#innerCanvas {
+  background-image: url("images/background1.png");
+  background-size: contain;
+  margin: 0;
+}
+.image {
+  position: absolute;
+  display: inline-block;
+  transform-origin: 50% 50%;
+}
+img {
+  width: 100%;
+}
+#frame {
+  position: absolute;
+  display: none;
+  border: 1px solid #00ff00;
+  pointer-events: none; /* タッチしても反応しなくする */
+}
+#trashButton {
+  position: absolute;
+  display: none;
+}
+.menuBackGround {
+  position: absolute;
+  margin: 0px;
+  top: 0px;  left: 0px;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.trayBorder {
+  position: relative;
+  background: #f10d4a;
+}
+.traySheet {
+  position: relative;
+  background: #ffffff;
+}
+.trayTitle {
+  position: relative;
+  color: #ffffff;
+}
+#materialMenu {
+  position: absolute;
+  margin: 0px;
+  top: 0px; left: 0px;
+  width: 100%; height: 100%;
+  display: none;
+}
+
+.materialPos {
+  position: absolute;
+}
+#material_1,
+#material_2,
+#material_3,
+#material_4 {
+  display: none;
+}
+#toLeft, #toRight {
+  position: absolute;
+  color: #ffffff;
+}
+
+.materialScroll {
+  display: block;
+  width:90%; height: 90%;
+  text-align: left;
+  overflow-y: auto;
+  font-size:0;
+}
+.imageM {
+  margin: 0px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+
+#hatenaMenu {
+  position: absolute;
+  margin: 0px;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  display: none;
+
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+#displayMenu {
+  position: absolute;
+  margin: 0px;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+#displayTray {
+  position: absolute;
+}
+
+#checkWrapper {
+  overflow: hidden;
+}
+input[type=checkbox] {
+  display: none; /* チェックボックスを非表示にする */
+}
+input[type=checkbox] + label {
+  display: flex;
+  width: 125%;
+  transform-origin: 0 0;
+  transform: scaleX(0.8);
+  color: #33333366;
+  -webkit-align-items: center;
+  align-items: center;
+}
+input[type="checkbox"]:checked + label {
+  color: #333333;
+}
+input[value=start] + label {
+  width: 182%;
+  transform-origin: 0 0;
+  transform: scaleX(0.55);
+}
+
+
+#playTouchZone {
+  display: none;
+}
+#gameBox {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
+}
+#canvasWraper {
+  position: absolute;
+}
+#playrCanvas {
+  background: #88ff44;
+  margin: 0;
+}

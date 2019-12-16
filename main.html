@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>Canvas Project</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'nre8pds',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+
+  </head>
+
+  <body>
+    <!-- 背景 ぼかし -->
+    <div id="container">
+        <canvas id="canvas">
+          Canvas not supported
+        </canvas>
+
+      <div id="editorTouchZone" class="touchZone">
+        <div id="scrollBox">
+          <canvas id="innerCanvas">Canvas not supported</canvas>
+          <div id="stage"></div>
+          <div id="warp"></div>
+          <div id="tag"></div>
+          <div id="coin"></div>
+          <div id="enemy"></div>
+          <div id="goal"></div>
+          <div id="player"></div>
+          <div id="frame"></div>
+        </div>
+        <div id="trashButton"><img src="images/trash.png"></div>
+      </div>  <!-- touchZone終わり -->
+      <div id="playTouchZone" class="touchZone">
+        <div id="playPanel">
+          <!-- <div id="gameBox"> -->
+            <div id="canvasWraper">
+              <canvas id="tmpCanvas" style="display: none;">Canvas not supported</canvas>
+              <canvas id="playCanvas">Canvas not supported</canvas>
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+
+      <!-- ヘッダー -->
+      <div id="header" class="center">
+        <div class="hfFlex">
+          <div id="hatenaButton" class="circleButton inline-center">
+              <img src="images/hatena.png">
+          </div>
+          <div id="title">
+            ステージ作成
+          </div>
+          <div id="playButton" class="circleButton inline-center">
+            <img src="images/play.png">
+          </div>
+        </div>
+      </div>
+
+      <div id="footer" class="center">  <!-- フッター -->
+        <div class="hfFlex">  <!-- 中央�?せするため�?�箱 -->
+          <div id="displayButton" class="squareButton inline-center">
+            表示
+          </div>
+          <div id="plusButton" class="squareButton inline-center">
+            素材
+          </div>
+          <div id="abilityButton" class="squareButton inline-center">
+            性質
+          </div>
+        </div>
+      </div>  <!-- footer終わ�? -->
+    </div>
+
+    <!-- ?��を押したら�?�てくる�?材メニュー -->
+    <div id="materialMenu">
+      <div class="menuBackGround"></div>
+
+      <div id="material_0" class="materialPos"> <!-- ひと�? -->
+        <div class="trayTitle center">ステージ</div>
+        <div class="materialTray center trayBorder">
+          <div class="center traySheet">
+            <div class="materialScroll">
+              <div class="imageM" id="twitter"><img src="images/twitter.png"></div>
+              <div class="imageM" id="waraiotoko"><img src="images/nc73730.png"></div>
+              <div class="imageM" id="stick"><img src="images/stick.png"></div>
+              <div class="imageM" id="mikan"><img src="images/mikan.png"></div>
+              <div class="imageM" id="block1"><img src="images/block1.png"></div>
+              <div class="imageM" id="block2"><img src="images/block2.png"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="material_1" class="materialPos"> <!-- ひと塊 -->
+        <div class="trayTitle center">コイン</div>
+        <div class="materialTray center trayBorder">
+          <div class="center traySheet">
+            <div class="materialScroll">
+              <div class="imageM" id="money_5"><img src="images/money_5.png"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="material_2" class="materialPos"> <!-- ひと塊 -->
+        <div class="trayTitle center">敵</div>
+        <div class="materialTray center trayBorder">
+          <div class="center traySheet">
+            <div class="materialScroll">
+              <div class="imageM" id="ringo"><img src="images/ringo.png"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="material_3" class="materialPos"> <!-- ひと塊 -->
+        <div class="trayTitle center">特殊</div>
+        <div class="materialTray center trayBorder">
+          <div class="center traySheet">
+            <div class="materialScroll">
+              <div class="imageM" id="warp"><img src="images/warp.png"></div>
+              <div class="imageM" id="tag1"><img src="images/tag1.png"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="material_4" class="materialPos"> <!-- ひと塊 -->
+        <div class="trayTitle center">プレイヤー</div>
+        <div class="materialTray center trayBorder">
+          <div class="center traySheet">
+            <div class="materialScroll">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="toLeft" class="center">&lt;</div>
+      <div id="toRight" class="center">&gt;</div>
+    </div>
+
+    <div id="hatenaMenu">
+      <div class="menuBackGround"></div>
+      <div id="hatenaTray" class="center trayBorder">
+        <div class="center traySheet">
+          <div id="howTo">
+            <h1>あそびかた</h1>
+            <p>自分で作ったステージをみんなにプレイしてもらおう</p>
+            <p>作ったステージを自分でクリアすると公開できるよ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="displayMenu">
+      <div class="menuBackGround"></div>
+      <div id="displayTray" class="center trayBorder">
+        <div class="center traySheet">
+          <div id="checkWrapper">
+            <input type="checkbox" name="display" value="start" id="checkStart" checked>
+            <label for="checkStart" class="displayLabel">開始/終了位置</label>
+            <input type="checkbox" name="display" value="stage" id="checkStage" checked>
+            <label for="checkStage" class="displayLabel">ステージ</label>
+            <input type="checkbox" name="display" value="coin" id="checkCoin" checked>
+            <label for="checkCoin" class="displayLabel">コイン</label>
+            <input type="checkbox" name="display" value="enemy" id="checkEnemy" checked>
+            <label for="checkEnemy" class="displayLabel">敵</label>
+            <input type="checkbox" name="display" value="special" id="checkSpecial" checked>
+            <label for="checkSpecial" class="displayLabel">特殊</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="abilityMenu">
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+    <script src="play.js"></script>
+  </body>
+</html>
